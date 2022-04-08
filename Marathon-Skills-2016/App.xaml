@@ -1,0 +1,11 @@
+﻿<Application x:Class="Marathon_Skills_2016.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Marathon_Skills_2016"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style TargetType="Window">
+            <Setter Property="FontFamily" Value="Arial"/>
+        </Style>
+    </Application.Resources>
+</Application>
