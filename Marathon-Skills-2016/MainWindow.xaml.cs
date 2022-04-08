@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Marathon_Skills_2016.Pages;
+using Marathon_Skills_2016.Utils;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +25,65 @@ namespace Marathon_Skills_2016
     {
         public MainWindow()
         {
-            //// Code To transfer to hex from RGB
-            //   var color = Color.FromRgb(R, G, B);
-            //   string hex = color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
+            // Бразильский зелёный - #00903E
+            // Бразильский жёлтый - #FDC100
+            // Бразильский синий - #241D70
+            // Белый - #FFFFFF
+            // Светло серый - #EBEBEB
+            // Серый - #B4B4B4
+            // Тёмно серый - #505050
+            // Чёрный - #000000
             InitializeComponent();
+            TBlockMarathon.Visibility = Visibility.Hidden;
+            BtnLogOut.Visibility = Visibility.Hidden;
+            BtnBack.Visibility = Visibility.Hidden;
+            Manager.MainFrame = MainFrame;
+            Manager.MainFrame.Navigate(new StartingPage());
+            
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e) => Manager.MainFrame.GoBack();
+        private void MainFrame_ContentRendered(object sender, EventArgs e)
+        {
+            if (Manager.MainFrame.Content is StartingPage)
+            {
+                TBlockMarathon.Visibility = Visibility.Hidden;
+                StackPanelStart.Visibility = Visibility.Visible;
+                BtnLogin.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                TBlockMarathon.Visibility = Visibility.Visible;
+                StackPanelStart.Visibility = Visibility.Hidden;
+            }
+
+            if (Manager.MainFrame.Content is RunnerCheckPage)
+                BtnLogin.Visibility = Visibility.Visible;
+
+            if (MainFrame.CanGoBack && 
+                !(Manager.MainFrame.Content is StartingPage) && 
+                !(Manager.MainFrame.Content is AdministratorUIPage) && 
+                !(Manager.MainFrame.Content is CoordinatorUIPage) && 
+                !(Manager.MainFrame.Content is RunnerUIPage))
+            {
+                BtnBack.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BtnBack.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            BtnLogin.Visibility = Visibility.Hidden;
+            Manager.MainFrame.Navigate(new LoginPage());
+        }
+
+        private void BtnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            BtnLogOut.Visibility = Visibility.Hidden;
+            Manager.MainFrame.Navigate(new StartingPage());
         }
     }
 }

@@ -5,13 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Marathon_Skills_2016"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Marathon Skills 2016" Height="530" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        
+        <Rectangle Fill="#505050"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="BtnBack" Content="Назад" Click="BtnBack_Click" FontSize ="21" MaxHeight="30" Margin="15" Foreground="Black" Width="70"/>
+            <TextBlock x:Name="TBlockMarathon" Text ="MARATHON SKILLS 2016" FontSize="30" FontWeight="Bold" Foreground="White" Margin="40,10,10,10"/>
+        </StackPanel>
+        <StackPanel x:Name="StackPanelStart" Grid.RowSpan="2" HorizontalAlignment="Center">
+            <TextBlock Text ="MARATHON SKILLS 2016" FontSize="30" FontWeight="Bold" Foreground="White" Margin="40,10,10,10"/>
+            <TextBlock/>
+            <TextBlock Text="Москва, Россия" HorizontalAlignment="Center" Foreground="#B4B4B4" FontStyle="Italic" FontSize="21"/>
+            <TextBlock x:Name="TBlockCurrentDate" Text="" HorizontalAlignment="Center" Foreground="#B4B4B4" FontStyle="Italic" FontSize="21"/>
+        </StackPanel>
+        <Button x:Name="BtnLogin" Click="BtnLogin_Click" Content="Login" FontSize="15" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100" MinHeight="30" Margin="15"/>
+        <Button x:Name="BtnLogOut" Click="BtnLogOut_Click" Content="Logout" HorizontalAlignment="Right" FontSize="21" Margin="10" MaxHeight="30" Foreground="Black" Width="70"/>
+        <Frame Panel.ZIndex="-1" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered" Grid.Row="1" Grid.RowSpan="2" Name="MainFrame"/>
+        <Rectangle Grid.Row="3" Fill="#505050"/>
     </Grid>
 </Window>

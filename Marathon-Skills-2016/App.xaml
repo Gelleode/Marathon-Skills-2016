@@ -7,5 +7,18 @@
         <Style TargetType="Window">
             <Setter Property="FontFamily" Value="Arial"/>
         </Style>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="#505050"/>
+            <Setter Property="Background"  Value="#EBEBEB"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="#505050" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

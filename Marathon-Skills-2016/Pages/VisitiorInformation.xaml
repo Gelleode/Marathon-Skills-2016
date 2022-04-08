@@ -1,0 +1,30 @@
+﻿<Page x:Class="Marathon_Skills_2016.Pages.VisitiorInformation"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Marathon_Skills_2016.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="VisitiorInformation">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" Margin="10">
+            <TextBlock Text="Подробная информация" HorizontalAlignment="Center" FontSize="21" Foreground="#505050"/>
+            <Line/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <StackPanel HorizontalAlignment="Center" Margin="10">
+                    <Button x:Name="BtnMarathonInfo" Click="BtnMarathonInfo_Click"  Content="Marathon Skills 2016" FontSize="21" Height="60" Width="350" Margin="10" FontStyle="Italic"/>
+                    <Button x:Name="BtnBMRCalc" Click="BtnBMRCalc_Click"  Content="BMR калькулятор" FontSize="21" Height="60" Width="350" Margin="10" FontStyle="Italic"/>
+                    <Button x:Name="BtnBMICalc" Click="BtnBMICalc_Click"  Content="BMI калькулятор" FontSize="21" Height="60" Width="350" Margin="10" FontStyle="Italic"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Margin="10">
+                    <Button x:Name="BtnMarathonLength" Click="BtnMarathonLength_Click" Content="Насколько долгий марафон" FontSize="21" Height="60" Width="350" Margin="10" FontStyle="Italic"/>
+                    <Button x:Name="BtnCharitiesList" Click="BtnCharitiesList_Click" FontSize="21" Height="60" Width="350" Margin="10" FontStyle="Italic">
+                        <TextBlock>Список благотворительных<LineBreak/>организаций</TextBlock>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

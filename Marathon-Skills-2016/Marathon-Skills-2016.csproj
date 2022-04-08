@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +64,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\AdministratorUIPage.xaml.cs">
+      <DependentUpon>AdministratorUIPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CoordinatorUIPage.xaml.cs">
+      <DependentUpon>CoordinatorUIPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MarathonInfo.xaml.cs">
+      <DependentUpon>MarathonInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RunnerCheckPage.xaml.cs">
+      <DependentUpon>RunnerCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RunnerUIPage.xaml.cs">
+      <DependentUpon>RunnerUIPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StartingPage.xaml.cs">
+      <DependentUpon>StartingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\VisitiorInformation.xaml.cs">
+      <DependentUpon>VisitiorInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\DatabaseContext.cs" />
+    <Compile Include="Utils\Manager.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,10 +98,62 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DBModel\Charity.cs" />
+    <Compile Include="DBModel\Country.cs" />
+    <Compile Include="DBModel\Event.cs" />
+    <Compile Include="DBModel\EventType.cs" />
+    <Compile Include="DBModel\Gender.cs" />
+    <Compile Include="DBModel\Marathon.cs" />
+    <Compile Include="DBModel\MarathonDB.cs" />
+    <Compile Include="DBModel\Position.cs" />
+    <Compile Include="DBModel\RaceKitOption.cs" />
+    <Compile Include="DBModel\Registration.cs" />
+    <Compile Include="DBModel\RegistrationEvent.cs" />
+    <Compile Include="DBModel\RegistrationStatus.cs" />
+    <Compile Include="DBModel\Role.cs" />
+    <Compile Include="DBModel\Runner.cs" />
+    <Compile Include="DBModel\Sponsorship.cs" />
+    <Compile Include="DBModel\Staff.cs" />
+    <Compile Include="DBModel\sysdiagrams.cs" />
+    <Compile Include="DBModel\Timesheet.cs" />
+    <Compile Include="DBModel\User.cs" />
+    <Compile Include="DBModel\Volunteer.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AdministratorUIPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CoordinatorUIPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MarathonInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RunnerCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RunnerUIPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StartingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\VisitiorInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -86,6 +173,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,8 +182,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Utils\" />
+    <Resource Include="Photos\Marathon\banco-banespa.jpg" />
+    <Resource Include="Photos\Marathon\ibirapuera-park-lake.jpg" />
+    <Resource Include="Photos\Marathon\marathon-image.jpg" />
+    <Resource Include="Photos\Marathon\teatro-municipal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Photos\Marathon\map.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
