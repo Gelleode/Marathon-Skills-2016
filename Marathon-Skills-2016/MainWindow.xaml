@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Marathon_Skills_2016"
         mc:Ignorable="d"
-        Title="Marathon Skills 2016" Height="530" Width="800">
+        Title="Marathon Skills 2016" Height="560" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>

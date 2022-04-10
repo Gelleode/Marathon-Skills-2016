@@ -79,6 +79,9 @@
     <Compile Include="Pages\RunnerCheckPage.xaml.cs">
       <DependentUpon>RunnerCheckPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RunnerRegistrationPage.xaml.cs">
+      <DependentUpon>RunnerRegistrationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RunnerUIPage.xaml.cs">
       <DependentUpon>RunnerUIPage.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RunnerCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RunnerRegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

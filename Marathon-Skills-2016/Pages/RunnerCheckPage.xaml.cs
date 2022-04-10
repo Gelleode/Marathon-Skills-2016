@@ -38,7 +38,8 @@ namespace Marathon_Skills_2016.Pages
 
         private void BtnRunnerNew_Click(object sender, RoutedEventArgs e)
         {
-
+            _window.BtnLogin.Visibility = Visibility.Hidden;
+            Manager.MainFrame.Navigate(new RunnerRegistrationPage());
         }
     }
 }
