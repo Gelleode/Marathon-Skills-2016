@@ -48,11 +48,11 @@ namespace Marathon_Skills_2016.Pages
                 return;
             }
             if (user.RoleId == "R")
-                Manager.MainFrame.Navigate(new RunnerUIPage());
+                Manager.MainFrame.Navigate(new RunnerUIPage(user));
             if (user.RoleId == "C")
-                Manager.MainFrame.Navigate(new CoordinatorUIPage());
+                Manager.MainFrame.Navigate(new CoordinatorUIPage(user));
             if (user.RoleId == "A")
-                Manager.MainFrame.Navigate(new AdministratorUIPage());
+                Manager.MainFrame.Navigate(new AdministratorUIPage(user));
             _window.BtnLogOut.Visibility = Visibility.Visible;
         }
 

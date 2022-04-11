@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Marathon_Skills_2016.DBModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace Marathon_Skills_2016.Pages
     /// </summary>
     public partial class CoordinatorUIPage : Page
     {
-        public CoordinatorUIPage()
+        public CoordinatorUIPage(User user)
         {
             InitializeComponent();
         }

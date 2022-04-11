@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Marathon_Skills_2016.DBModel;
+using Marathon_Skills_2016.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +22,16 @@ namespace Marathon_Skills_2016.Pages
     /// </summary>
     public partial class RunnerUIPage : Page
     {
-        public RunnerUIPage()
+        private User _user;
+        public RunnerUIPage(User user)
         {
+            _user = user;
             InitializeComponent();
         }
 
         private void BtnRegisterToMarathon_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new MarathonRegister(_user));
         }
 
         private void BtnMyResults_Click(object sender, RoutedEventArgs e)

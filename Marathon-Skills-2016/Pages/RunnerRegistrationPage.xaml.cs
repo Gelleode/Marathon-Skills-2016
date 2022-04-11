@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -56,10 +57,76 @@ namespace Marathon_Skills_2016.Pages
             _window.BtnLogin.Visibility = Visibility.Visible;
             Manager.MainFrame.GoBack();
         }
-
+        private bool CheckPassword(string password)
+        {
+            if (password == null)
+                return false;
+            if (password.Length < 6)
+                return false;
+            if (!password.Any(c=>char.IsDigit(c)))
+                return false;
+            if (!password.Any(c=>char.IsUpper(c)))
+                return false;
+            if (!password.Contains('!'))
+                return false;
+            if (!password.Contains('@'))
+                return false;
+            if (!password.Contains('#'))
+                return false;
+            if (!password.Contains('$'))
+                return false;
+            if (!password.Contains('%'))
+                return false;
+            if (!password.Contains('^'))
+                return false;
+            return true;
+        }
         private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
-            User newUser = new User()
+            string pattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
+            + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)"
+            + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
+            Regex regex = new Regex(@pattern, RegexOptions.IgnoreCase);
+            if (TBoxEmail.Text == "" ||
+                TBoxName.Text == "" ||
+                TBoxSurName.Text == "" ||
+                TBoxPhotoPath.Text == "" ||
+                DatePickBirth.Text == "" ||
+                TBoxPassword.Text == "" ||
+                TBoxRepeatPassword.Text == ""
+                )
+            {
+                MessageBox.Show("Укажите все данные!");
+                return;
+            }
+            if (!regex.IsMatch(TBoxEmail.Text))
+            {
+                MessageBox.Show("Укажите верный email");
+                return;
+            }
+            if (!CheckPassword(TBoxPassword.Text))
+            {
+                MessageBox.Show("Пароль должен содержать хотя бы одну прописную букву, хотя бы одну цифру и хотя бы один из этих символов: \n ! @ # $ % ^");
+                return;
+            }
+            if (TBoxPassword.Text != TBoxRepeatPassword.Text)
+            {
+                MessageBox.Show("Повторите пароль");
+                return;
+            }
+            if (DatePickBirth.DisplayDate > DateTime.Now.AddYears(-10))
+            {
+                MessageBox.Show("Укажите правильный возраст");
+                return;
+            }
+            User newUser = DatabaseContext.db.User.Find(TBoxEmail.Text);
+            if (newUser != null)
+            {
+                MessageBox.Show("Пользователь с таким логином уже есть!");
+                return;
+            }
+
+            newUser = new User()
             {
                 Email = TBoxEmail.Text,
                 Password = TBoxPassword.Text,
@@ -82,6 +149,9 @@ namespace Marathon_Skills_2016.Pages
             DatabaseContext.db.User.Add(newUser);
             DatabaseContext.db.Runner.Add(newRunner);
             DatabaseContext.db.SaveChanges();
+
+            _window.BtnLogOut.Visibility = Visibility.Visible;
+            Manager.MainFrame.Navigate(new MarathonRegister(DatabaseContext.db.User.Where(u=>u.Email.Equals(TBoxEmail.Text)).First()));
         }
     }
 }

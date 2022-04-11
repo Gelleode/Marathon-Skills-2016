@@ -47,7 +47,7 @@
                 <Image x:Name="ImageRunner" MinWidth="150" MinHeight="150" MaxHeight="150" Margin="5,5,5,5" HorizontalAlignment="Right"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="TBoxPhotoPath" MaxWidth="200" MinWidth="200" FontSize="15" Margin="10"/>
+                <TextBox x:Name="TBoxPhotoPath" MaxWidth="200" MinWidth="200" FontSize="15" Margin="10" IsReadOnly="True"/>
                 <Button x:Name="BtnChosePhoto" Click="BtnChosePhoto_Click" Content="Просмотр..." Width="100" MinHeight="30" Margin="10"/>
             </StackPanel>
         </StackPanel>
@@ -56,7 +56,7 @@
             <TextBlock Text="Страна:" FontSize="15" Foreground="#505050" HorizontalAlignment="Right" Margin="5,10,5,5"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="3" Grid.RowSpan="2">
-            <DatePicker x:Name="DatePickBirth" FontSize="15" Margin="5,8,0,5" Width="170" HorizontalAlignment="Left"/>
+            <DatePicker x:Name="DatePickBirth" FontSize="15" Margin="5,8,0,5" Width="170" HorizontalAlignment="Left" FirstDayOfWeek="Monday"/>
             <ComboBox x:Name="CBoxCountry" DisplayMemberPath="CountryName" FontSize="15" Margin="5,2,0,5" Width="100" HorizontalAlignment="Left"/>
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.ColumnSpan="5" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
