@@ -88,6 +88,9 @@
     <Compile Include="Pages\RunnerEditProfile.xaml.cs">
       <DependentUpon>RunnerEditProfile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RunnerMyResults.xaml.cs">
+      <DependentUpon>RunnerMyResults.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RunnerRegistrationPage.xaml.cs">
       <DependentUpon>RunnerRegistrationPage.xaml</DependentUpon>
     </Compile>
@@ -163,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RunnerEditProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RunnerMyResults.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

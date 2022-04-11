@@ -1,0 +1,35 @@
+﻿<Page x:Class="Marathon_Skills_2016.Pages.RunnerMyResults"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Marathon_Skills_2016.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RunnerMyResults">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Мои результаты" Grid.ColumnSpan="5" HorizontalAlignment="Center" FontSize="21" Foreground="#505050" Margin="10"/>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" Foreground="#505050" Margin="5" TextWrapping="Wrap" TextAlignment="Center">
+            Это - список всех ваших прошлых результатов гонки для Marathon Skills.<LineBreak/>
+            Итоговое место сравнивает вас со всеми бегунами. <LineBreak/>
+            Место по категории сравнивает вас с бегунами вашего пола и возрастной категории.
+        </TextBlock>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
+            <TextBlock Text="Пол:" FontWeight="Bold" FontSize="15" Foreground="#505050" Margin="10"/>
+            <TextBlock x:Name="TBlockGender" FontSize="15" Foreground="#505050" Margin="10"/>
+            <TextBlock Text="Возрастная категория:" FontWeight="Bold" FontSize="15" Foreground="#505050" Margin="10"/>
+            <TextBlock x:Name="TBlockAgeCat" FontSize="15" Foreground="#505050" Margin="10"/>
+        </StackPanel>
+        
+    </Grid>
+</Page>
