@@ -9,7 +9,6 @@
       Title="MarathonRegister">
 
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
@@ -45,7 +44,7 @@
             <CheckBox x:Name="CheckFR" Checked="Checked" Unchecked="Checked" Margin="8" Content="5km Малая дистанция($20)" FontSize="15" Foreground="#505050"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="3" Grid.RowSpan="2">
-            <RadioButton x:Name="RButtonA" Checked="Checked" GroupName="Complect" FontSize="15" Foreground="#505050" Margin="5" IsChecked="True">
+            <RadioButton x:Name="RButtonA" Checked="Checked" GroupName="Complect" FontSize="15" Foreground="#505050" Margin="5">
                 <TextBlock TextWrapping="Wrap">
                     <Run FontWeight="Bold">Вариант А ($0)</Run>
                     <Run>: Номер бегуна + RFID браслет</Run>

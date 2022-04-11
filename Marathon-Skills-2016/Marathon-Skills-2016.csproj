@@ -76,11 +76,17 @@
     <Compile Include="Pages\MarathonInfo.xaml.cs">
       <DependentUpon>MarathonInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MarathonRegConfirm.xaml.cs">
+      <DependentUpon>MarathonRegConfirm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MarathonRegister.xaml.cs">
       <DependentUpon>MarathonRegister.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RunnerCheckPage.xaml.cs">
       <DependentUpon>RunnerCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RunnerEditProfile.xaml.cs">
+      <DependentUpon>RunnerEditProfile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RunnerRegistrationPage.xaml.cs">
       <DependentUpon>RunnerRegistrationPage.xaml</DependentUpon>
@@ -144,11 +150,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MarathonRegConfirm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MarathonRegister.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RunnerCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RunnerEditProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,7 +210,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Photos\Runner\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Photos\Marathon\banco-banespa.jpg" />
     <Resource Include="Photos\Marathon\ibirapuera-park-lake.jpg" />

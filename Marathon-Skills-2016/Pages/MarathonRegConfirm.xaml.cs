@@ -18,29 +18,20 @@ using System.Windows.Shapes;
 namespace Marathon_Skills_2016.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для RunnerUIPage.xaml
+    /// Логика взаимодействия для MarathonRegConfirm.xaml
     /// </summary>
-    public partial class RunnerUIPage : Page
+    public partial class MarathonRegConfirm : Page
     {
-        private User _user;
-        public RunnerUIPage(User user)
+        private static User _user;
+        public MarathonRegConfirm(User user)
         {
             _user = user;
             InitializeComponent();
         }
 
-        private void BtnRegisterToMarathon_Click(object sender, RoutedEventArgs e) => Manager.MainFrame.Navigate(new MarathonRegister(_user));
-
-        private void BtnMyResults_Click(object sender, RoutedEventArgs e)
+        private void BtnOK_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void BtnEditProfile_Click(object sender, RoutedEventArgs e) => Manager.MainFrame.Navigate(new RunnerEditProfile(_user));
-
-        private void BtnMyCharity_Click(object sender, RoutedEventArgs e)
-        {
-
+            Manager.MainFrame.Navigate(new RunnerUIPage(_user));
         }
     }
 }

@@ -144,7 +144,7 @@ namespace Marathon_Skills_2016.Pages
                 PhotoPath = $"{TBoxEmail.Text}.{TBoxPhotoPath.Text.Split('.')[1]}"
             };
 
-            File.Copy(_photoPath, String.Format($@"{Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName}\Photos\Runner\{TBoxEmail.Text}.{TBoxPhotoPath.Text.Split('.')[1]}", true));
+            File.Copy(_photoPath, String.Format($@"{Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName}\Photos\Runner\{TBoxEmail.Text}.{TBoxPhotoPath.Text.Split('.')[1]}", true, true));
 
             DatabaseContext.db.User.Add(newUser);
             DatabaseContext.db.Runner.Add(newRunner);

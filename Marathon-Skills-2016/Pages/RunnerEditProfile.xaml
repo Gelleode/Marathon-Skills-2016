@@ -1,0 +1,67 @@
+﻿<Page x:Class="Marathon_Skills_2016.Pages.RunnerEditProfile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Marathon_Skills_2016.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RunnerEditProfile">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Редактирование профиля" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="21" Foreground="#505050" Margin="10"/>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Right" Grid.RowSpan="2">
+            <TextBlock Text="Email: " FontSize="15" Foreground="#505050" Margin="5,10,0,5" HorizontalAlignment="Right"/>
+            <TextBlock Text="Имя: " FontSize="15" Foreground="#505050" Margin="5,10,0,5" HorizontalAlignment="Right"/>
+            <TextBlock Text="Фамилия: " FontSize="15" Foreground="#505050" Margin="5,10,0,5" HorizontalAlignment="Right"/>
+            <TextBlock Text="Пол: " FontSize="15" Foreground="#505050" Margin="5,10,0,5" HorizontalAlignment="Right"/>
+            <TextBlock Text="Дата рождения:" FontSize="15" Foreground="#505050" HorizontalAlignment="Right" Margin="5,10,5,5"/>
+            <TextBlock Text="Страна:" FontSize="15" Foreground="#505050" HorizontalAlignment="Right" Margin="5,12,5,5"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Grid.RowSpan="2">
+            <TextBlock x:Name="TBlockEmail" Text="{Binding Email}" FontStyle="Italic" Foreground="#B4B4B4" FontSize="15" Margin="5,10,0,5" Width="230" HorizontalAlignment="Left"/>
+            <TextBox x:Name="TBoxName" Text="{Binding User.FirstName}" FontSize="15" Margin="5,8,0,5" Width="200" HorizontalAlignment="Left"/>
+            <TextBox x:Name="TBoxSurName" Text="{Binding User.LastName}" FontSize="15" Margin="5,8,0,5" Width="200" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="CBoxGender" SelectedItem="{Binding Gender1}" DisplayMemberPath="Gender1" FontSize="15" Margin="5,8,0,5" Width="100" HorizontalAlignment="Left"/>
+            <DatePicker x:Name="DatePickBirth" SelectedDate="{Binding DateOfBirth}" FontSize="15" Margin="5,3,0,5" Width="170" HorizontalAlignment="Left" FirstDayOfWeek="Monday"/>
+            <ComboBox x:Name="CBoxCountry" SelectedItem="{Binding Country}" DisplayMemberPath="CountryName" FontSize="15" Margin="5,5,0,5" Width="170" HorizontalAlignment="Left"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Фото файл:" FontSize="15" Foreground="#505050" Margin="5,5,5,5" VerticalAlignment="Bottom"/>
+                <Image x:Name="ImageRunner" MinWidth="150" MinHeight="150" MaxHeight="150" Margin="5,5,5,5" HorizontalAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="TBoxPhotoPath" Text="{Binding PhotoPath}" MaxWidth="200" MinWidth="200" FontSize="15" Margin="10" IsReadOnly="True"/>
+                <Button x:Name="BtnChosePhoto" Click="BtnChosePhoto_Click"  Content="Просмотр..." Width="100" MinHeight="30" Margin="10"/>
+            </StackPanel>
+            <TextBlock Text="Смена пароля" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="21" Foreground="#505050" Margin="5"/>
+            <TextBlock Text="Оставьте эти поля незаполненными если не хотите изменять пароль" Margin="10" Foreground="#B4B4B4" FontSize="15" TextWrapping="Wrap" TextAlignment="Center"/>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <TextBlock Text="Пароль:" Foreground="#505050" FontSize="15" Margin="5"/>
+                <TextBox x:Name="TBoxPass" FontSize="15" Margin="5" Width="200"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <TextBlock Text="Повтор пароля:" Foreground="#505050" FontSize="15" Margin="5"/>
+                <TextBox x:Name="TBoxPassRepeat" FontSize="15" Margin="5" Width="200"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="5" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Button x:Name="BtnSave" Click="BtnSave_Click" Content="Сохранить" Width="100" MinHeight="30" Margin="10"/>
+            <Button x:Name="BtnCancel" Click="BtnCancel_Click"  Content="Отмена"  Width="100" MinHeight="30" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Page>

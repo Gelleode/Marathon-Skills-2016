@@ -41,7 +41,7 @@ namespace Marathon_Skills_2016.Pages
                 MessageBox.Show("Необходимо ввести почту и пароль!");
                 return;
             }
-            User user = DatabaseContext.db.User.Find(TBoxEmail.Text);
+            User user = DatabaseContext.db.User.First(u=>u.Email.Equals(TBoxEmail.Text));
             if (user == null || TBoxPassword.Text != user.Password)
             {
                 MessageBox.Show("Wrong email or password!");

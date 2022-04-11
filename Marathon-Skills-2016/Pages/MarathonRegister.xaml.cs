@@ -29,6 +29,7 @@ namespace Marathon_Skills_2016.Pages
         {
             _user = user;
             InitializeComponent();
+            RButtonA.IsChecked = true;
             CBoxCharity.ItemsSource = DatabaseContext.db.Charity.ToList();
             CBoxCharity.SelectedIndex = 0;
         }
@@ -67,26 +68,25 @@ namespace Marathon_Skills_2016.Pages
         private void TBoxCharityMoney_PreviewTextInput(object sender, TextCompositionEventArgs e) => e.Handled = !IsTextAllowed(e.Text);
         private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
+            if (!(CheckFR.IsChecked == true || CheckHM.IsChecked == true || CheckFM.IsChecked == true))
+            {
+                MessageBox.Show("Выберите тип марафона");
+                return;
+            }
+
             string raceKitOptionId = "A";
             if (RButtonB.IsChecked == true)
                 raceKitOptionId = "B";
             if (RButtonC.IsChecked == true)
                 raceKitOptionId = "C";
             int price = 0;
-            if (RButtonA.IsChecked == true)
-                price += 0;
+            int sponsor = 0;
             if (RButtonB.IsChecked == true)
-                price += 20;
+                price = 20;
             if (RButtonC.IsChecked == true)
-                price += 45;
-            if (CheckFM.IsChecked == true)
-                price += 145;
-            if (CheckHM.IsChecked == true)
-                price += 75;
-            if (CheckFR.IsChecked == true)
-                price += 20;
+                price = 45;
             if (TBoxCharityMoney.Text != "")
-                price += Convert.ToInt32(TBoxCharityMoney.Text);
+                sponsor = Convert.ToInt32(TBoxCharityMoney.Text);
 
             TBlockCost.Text = price.ToString();
             Registration registration = new Registration()
@@ -98,8 +98,12 @@ namespace Marathon_Skills_2016.Pages
                 RegistrationStatusId = 1,
                 Cost = price,
                 CharityId = (CBoxCharity.SelectedItem as Charity).CharityId,
-
+                SponsorshipTarget = sponsor
             };
+            DatabaseContext.db.Registration.Add(registration);
+            DatabaseContext.db.SaveChanges();
+
+            Manager.MainFrame.Navigate(new MarathonRegConfirm(_user));
         }
        
     }
