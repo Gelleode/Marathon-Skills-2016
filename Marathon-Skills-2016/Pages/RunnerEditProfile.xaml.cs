@@ -34,12 +34,20 @@ namespace Marathon_Skills_2016.Pages
             CBoxGender.ItemsSource = DatabaseContext.db.Gender.ToList();
             CBoxCountry.ItemsSource = DatabaseContext.db.Country.ToList();
             DataContext = _user.Runner.First();
-            BitmapImage bitmapImage = new BitmapImage() { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
-            bitmapImage.BeginInit();
-            bitmapImage.UriSource = new Uri(String.Format($@"{Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName}\Photos\Runner\{_user.Runner.First().PhotoPath}"), UriKind.Absolute);
-            bitmapImage.EndInit();
-            ImageRunner.Source = bitmapImage;
-            
+            if (_user.Runner.First().PhotoPath != null)
+            {
+
+                FileInfo f1 = new FileInfo(String.Format($@"{Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName}\Photos\Runner\{_user.Runner.First().PhotoPath}"));
+                FileInfo f2 = f1.CopyTo(string.Format("{0}{1}{2}", AppDomain.CurrentDomain.BaseDirectory, TBlockEmail.Text, f1.Extension), true);
+                BitmapImage bitmapImage = new BitmapImage() { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
+                Uri uri = new Uri( f2.FullName, UriKind.Absolute);
+                bitmapImage.BeginInit();
+                bitmapImage.UriSource = uri;
+                bitmapImage.EndInit();
+                ImageRunner.Source = bitmapImage;
+                f1.Open(FileMode.Open).Close();
+            }
+
         }
 
         private void BtnChosePhoto_Click(object sender, RoutedEventArgs e)
@@ -107,14 +115,20 @@ namespace Marathon_Skills_2016.Pages
                 MessageBox.Show("Укажите правильный возраст");
                 return;
             }
-
+            string path = String.Format($@"{Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName}\Photos\Runner\");
+            
             if (TBoxPhotoPath.Text != _user.Runner.First().PhotoPath)
             {
-                File.Copy(_photoPath, String.Format($@"{Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName}\Photos\Runner\{TBlockEmail.Text}.{TBoxPhotoPath.Text.Split('.')[1]}"), true);
+                FileInfo f1 = new FileInfo(_photoPath);
+                //FileInfo f2 = new FileInfo(System.IO.Path.Combine(path, _user.Runner.First().PhotoPath));
+                //f2.Delete();
+                f1.CopyTo(string.Format("{0}{1}{2}", path, TBlockEmail.Text, f1.Extension), true);
                 _user.Runner.First().PhotoPath = $"{TBlockEmail.Text}.{TBoxPhotoPath.Text.Split('.')[1] }";
+                
             }
             DatabaseContext.db.SaveChanges();
             Manager.MainFrame.Navigate(new RunnerUIPage(_user));
+            
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e) => Manager.MainFrame.Navigate(new RunnerUIPage(_user));

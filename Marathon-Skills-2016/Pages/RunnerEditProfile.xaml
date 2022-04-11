@@ -45,7 +45,7 @@
                 <Image x:Name="ImageRunner" MinWidth="150" MinHeight="150" MaxHeight="150" Margin="5,5,5,5" HorizontalAlignment="Right"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="TBoxPhotoPath" Text="{Binding PhotoPath}" MaxWidth="200" MinWidth="200" FontSize="15" Margin="10" IsReadOnly="True"/>
+                <TextBox x:Name="TBoxPhotoPath" MaxWidth="200" MinWidth="200" FontSize="15" Margin="10" IsReadOnly="True"/>
                 <Button x:Name="BtnChosePhoto" Click="BtnChosePhoto_Click"  Content="Просмотр..." Width="100" MinHeight="30" Margin="10"/>
             </StackPanel>
             <TextBlock Text="Смена пароля" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="21" Foreground="#505050" Margin="5"/>
