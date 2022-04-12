@@ -36,30 +36,44 @@ namespace Marathon_Skills_2016.Pages
             DataContext = _user.Runner.First();
             if (_user.Runner.First().PhotoPath != null)
             {
-
-                FileInfo f1 = new FileInfo(String.Format($@"{Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName}\Photos\Runner\{_user.Runner.First().PhotoPath}"));
-                FileInfo f2 = f1.CopyTo(string.Format("{0}{1}{2}", AppDomain.CurrentDomain.BaseDirectory, TBlockEmail.Text, f1.Extension), true);
-                BitmapImage bitmapImage = new BitmapImage() { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
-                Uri uri = new Uri( f2.FullName, UriKind.Absolute);
-                bitmapImage.BeginInit();
-                bitmapImage.UriSource = uri;
-                bitmapImage.EndInit();
-                ImageRunner.Source = bitmapImage;
-                f1.Open(FileMode.Open).Close();
+                byte[] imageInfo = File.ReadAllBytes(String.Format($@"{Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName}\Photos\Runner\{_user.Runner.First().PhotoPath}"));
+                BitmapImage image;
+                using (MemoryStream imageStream = new MemoryStream(imageInfo))
+                {
+                    image = new BitmapImage();
+                    image.BeginInit();
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.StreamSource = imageStream;
+                    image.EndInit();
+                }
+                ImageRunner.Source = image;
             }
 
         }
 
         private void BtnChosePhoto_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*";
-            openFileDialog.InitialDirectory = @"c:\";
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*",
+                InitialDirectory = @"c:\"
+            };
             if (openFileDialog.ShowDialog() == true)
             {
                 TBoxPhotoPath.Text = openFileDialog.SafeFileName;
-                ImageRunner.Source = new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Absolute)) { CreateOptions = BitmapCreateOptions.IgnoreImageCache };
                 _photoPath = openFileDialog.FileName;
+
+                byte[] imageInfo = File.ReadAllBytes(openFileDialog.FileName);
+                BitmapImage image;
+                using (MemoryStream imageStream = new MemoryStream(imageInfo))
+                {
+                    image = new BitmapImage();
+                    image.BeginInit();
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.StreamSource = imageStream;
+                    image.EndInit();
+                }
+                ImageRunner.Source = image;
             }
         }
         private bool CheckPassword(string password)
@@ -119,11 +133,12 @@ namespace Marathon_Skills_2016.Pages
             
             if (TBoxPhotoPath.Text != _user.Runner.First().PhotoPath)
             {
+                if (_user.Runner.First().PhotoPath != null)
+                    File.Delete(String.Format($@"{Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName}\Photos\Runner\{_user.Runner.First().PhotoPath}"));
+                
                 FileInfo f1 = new FileInfo(_photoPath);
-                //FileInfo f2 = new FileInfo(System.IO.Path.Combine(path, _user.Runner.First().PhotoPath));
-                //f2.Delete();
                 f1.CopyTo(string.Format("{0}{1}{2}", path, TBlockEmail.Text, f1.Extension), true);
-                _user.Runner.First().PhotoPath = $"{TBlockEmail.Text}.{TBoxPhotoPath.Text.Split('.')[1] }";
+                _user.Runner.First().PhotoPath = $"{TBlockEmail.Text}{f1.Extension}";
                 
             }
             DatabaseContext.db.SaveChanges();

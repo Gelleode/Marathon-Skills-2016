@@ -105,6 +105,8 @@
     </Compile>
     <Compile Include="Utils\DatabaseContext.cs" />
     <Compile Include="Utils\Manager.cs" />
+    <Compile Include="Utils\RunnerMarathonResult.cs" />
+    <Compile Include="Utils\RunnerCat.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

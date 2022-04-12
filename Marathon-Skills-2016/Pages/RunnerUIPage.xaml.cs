@@ -31,10 +31,7 @@ namespace Marathon_Skills_2016.Pages
 
         private void BtnRegisterToMarathon_Click(object sender, RoutedEventArgs e) => Manager.MainFrame.Navigate(new MarathonRegister(_user));
 
-        private void BtnMyResults_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        private void BtnMyResults_Click(object sender, RoutedEventArgs e) => Manager.MainFrame.Navigate(new RunnerMyResults(_user));
 
         private void BtnEditProfile_Click(object sender, RoutedEventArgs e) => Manager.MainFrame.Navigate(new RunnerEditProfile(_user));
 

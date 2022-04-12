@@ -27,7 +27,7 @@
         <StackPanel Grid.Row="5" Grid.Column="3" Grid.RowSpan="2" HorizontalAlignment="Center">
             <TextBlock Foreground="#B4B4B4" Text="Регистрационный взнос" FontWeight="Bold" FontSize="15" Margin="10"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <TextBlock Foreground="#B4B4B4" Text="$" FontWeight="Bold" FontSize="35"/>
+                <TextBlock Foreground="#B4B4B4" Text="₪" FontWeight="Bold" FontSize="35"/>
                 <TextBlock x:Name="TBlockCost"  Foreground="#B4B4B4" FontWeight="Bold" FontSize="35"/>
             </StackPanel>
         </StackPanel>

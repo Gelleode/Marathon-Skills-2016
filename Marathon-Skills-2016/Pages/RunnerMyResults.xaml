@@ -26,9 +26,9 @@
         </TextBlock>
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
             <TextBlock Text="Пол:" FontWeight="Bold" FontSize="15" Foreground="#505050" Margin="10"/>
-            <TextBlock x:Name="TBlockGender" FontSize="15" Foreground="#505050" Margin="10"/>
+            <TextBlock x:Name="TBlockGender" FontSize="15" Foreground="#505050" Margin="0,10,10,10"/>
             <TextBlock Text="Возрастная категория:" FontWeight="Bold" FontSize="15" Foreground="#505050" Margin="10"/>
-            <TextBlock x:Name="TBlockAgeCat" FontSize="15" Foreground="#505050" Margin="10"/>
+            <TextBlock x:Name="TBlockAgeCat" FontSize="15" Foreground="#505050" Margin="0,10"/>
         </StackPanel>
         
     </Grid>
