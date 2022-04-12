@@ -76,6 +76,9 @@
     <Compile Include="Pages\MarathonInfo.xaml.cs">
       <DependentUpon>MarathonInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MarathonLengthPage.xaml.cs">
+      <DependentUpon>MarathonLengthPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MarathonRegConfirm.xaml.cs">
       <DependentUpon>MarathonRegConfirm.xaml</DependentUpon>
     </Compile>
@@ -152,6 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MarathonInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MarathonLengthPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -36,19 +36,22 @@ namespace Marathon_Skills_2016.Pages
             DataContext = _user.Runner.First();
             if (_user.Runner.First().PhotoPath != null)
             {
-                byte[] imageInfo = File.ReadAllBytes(String.Format($@"{Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName}\Photos\Runner\{_user.Runner.First().PhotoPath}"));
-                BitmapImage image;
-                using (MemoryStream imageStream = new MemoryStream(imageInfo))
+                try 
                 {
-                    image = new BitmapImage();
-                    image.BeginInit();
-                    image.CacheOption = BitmapCacheOption.OnLoad;
-                    image.StreamSource = imageStream;
-                    image.EndInit();
+                    byte[] imageInfo = File.ReadAllBytes(String.Format($@"{Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName}\Photos\Runner\{_user.Runner.First().PhotoPath}"));
+                    BitmapImage image;
+                    using (MemoryStream imageStream = new MemoryStream(imageInfo))
+                    {
+                        image = new BitmapImage();
+                        image.BeginInit();
+                        image.CacheOption = BitmapCacheOption.OnLoad;
+                        image.StreamSource = imageStream;
+                        image.EndInit();
+                    }
+                    ImageRunner.Source = image;
                 }
-                ImageRunner.Source = image;
+                catch { }
             }
-
         }
 
         private void BtnChosePhoto_Click(object sender, RoutedEventArgs e)

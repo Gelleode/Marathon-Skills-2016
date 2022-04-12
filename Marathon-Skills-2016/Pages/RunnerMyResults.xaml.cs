@@ -33,8 +33,24 @@ namespace Marathon_Skills_2016.Pages
             // 71+
             _user = user;
             RunnerCat curRunner = new RunnerCat() { Runner = _user.Runner.First(), Gender = _user.Runner.First().Gender1 };
+
+            List<Registration> allRegistrations = DatabaseContext.db.Registration.ToList();
+            List<RegistrationEvent> allRegistrationEvents = DatabaseContext.db.RegistrationEvent.ToList();
             List<RunnerCat> listRunners = new List<RunnerCat>(DatabaseContext.db.Runner.Select(s => new RunnerCat { Runner = s, Gender = s.Gender1 }));
-            listRunners = listRunners.Where(c => c.Gender.Equals(curRunner.Gender) && c.Category.Equals(curRunner.Category)).ToList();
+            
+            List<Registration> registrations = new List<Registration>(DatabaseContext.db.Registration.Where(r => r.RunnerId.Equals(curRunner.Runner.RunnerId)));
+            List<RegistrationEvent> registrationEvents = allRegistrationEvents.Where(re => registrations.All(r2 => r2.RegistrationId == re.RegistrationId)).ToList();
+            
+            List<RunnerMarathonResult> runnerMarathonResults = new List<RunnerMarathonResult>(registrationEvents.Select(s => new RunnerMarathonResult
+            {
+                Country = s.Event.Marathon.Country.CountryName,
+                EventType = s.Event.EventType.EventTypeName,
+                Year = s.Event.Marathon.YearHeld.Value,
+                RaceTime = s.RaceTime.Value,
+                TotalPlace = allRegistrationEvents.Where(re => re.EventId.Equals(s.EventId) && re.RaceTime > 0).OrderBy(re => re.RaceTime).ToList().FindIndex(re => re.RaceTime.Equals(s.RaceTime)) + 1,
+                CatPlace = allRegistrationEvents.Join(allRegistrations.Join(listRunners.Where(c => c.Gender.Equals(curRunner.Gender) && c.Category.Equals(curRunner.Category)), r => r.RunnerId, lr => lr.Runner.RunnerId, (r, lr) => r), re => re.RegistrationId, r => r.RegistrationId, (re, r) => re).Where(re => re.EventId.Equals(s.EventId) && re.RaceTime > 0).OrderBy(o => o.RaceTime).ToList().FindIndex(f => f.RaceTime.Equals(registrationEvents.First().RaceTime)) + 1,
+            }));
+
             InitializeComponent();
             TBlockGender.Text = curRunner.Gender.Gender1;
             switch (curRunner.Category)
@@ -46,7 +62,8 @@ namespace Marathon_Skills_2016.Pages
                 case 5: TBlockAgeCat.Text = "56-70"; break;
                 case 6: TBlockAgeCat.Text = "старше 70"; break;
             }
-            List<RunnerMarathonResult> runnerMarathonResults = new List<RunnerMarathonResult>();
+
+            LViewMarathon.ItemsSource = runnerMarathonResults;
 
         }
     }

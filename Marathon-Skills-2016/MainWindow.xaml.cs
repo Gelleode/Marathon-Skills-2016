@@ -1,4 +1,5 @@
-﻿using Marathon_Skills_2016.Pages;
+﻿using Marathon_Skills_2016.DBModel;
+using Marathon_Skills_2016.Pages;
 using Marathon_Skills_2016.Utils;
 using System;
 using System.Collections.Generic;
@@ -34,17 +35,23 @@ namespace Marathon_Skills_2016
             // Тёмно серый - #505050
             // Чёрный - #000000
             InitializeComponent();
+
             TBlockMarathon.Visibility = Visibility.Hidden;
             BtnLogOut.Visibility = Visibility.Hidden;
             BtnBack.Visibility = Visibility.Hidden;
             Manager.MainFrame = MainFrame;
             Manager.MainFrame.Navigate(new StartingPage());
+
             
         }
+        private void TestFunc()
+        {
 
+        }
         private void BtnBack_Click(object sender, RoutedEventArgs e) => Manager.MainFrame.GoBack();
         private void MainFrame_ContentRendered(object sender, EventArgs e)
         {
+            TestFunc();
             if (Manager.MainFrame.Content is StartingPage)
             {
                 TBlockMarathon.Visibility = Visibility.Hidden;
