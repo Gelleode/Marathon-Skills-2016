@@ -26,7 +26,7 @@ namespace Marathon_Skills_2016.Pages
             InitializeComponent();
         }
 
-        private void BtnMarathonLength_Click(object sender, RoutedEventArgs e) { }
+        private void BtnMarathonLength_Click(object sender, RoutedEventArgs e) => Manager.MainFrame.Navigate(new MarathonLengthPage());
 
         private void BtnCharitiesList_Click(object sender, RoutedEventArgs e)
         {

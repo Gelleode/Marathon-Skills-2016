@@ -238,5 +238,19 @@
   <ItemGroup>
     <Resource Include="Photos\Marathon\map.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Photos\MarathonHowLong\airbus-a380.jpg" />
+    <Resource Include="Photos\MarathonHowLong\bus.jpg" />
+    <Resource Include="Photos\MarathonHowLong\capybara.jpg" />
+    <Resource Include="Photos\MarathonHowLong\f1-car.jpg" />
+    <Resource Include="Photos\MarathonHowLong\football-field.jpg" />
+    <Resource Include="Photos\MarathonHowLong\horse.png" />
+    <Resource Include="Photos\MarathonHowLong\jaguar.jpg" />
+    <Resource Include="Photos\MarathonHowLong\pair-of-havaianas.jpg" />
+    <Resource Include="Photos\MarathonHowLong\ronaldinho.jpg" />
+    <Resource Include="Photos\MarathonHowLong\sloth.jpg" />
+    <Resource Include="Photos\MarathonHowLong\slug.jpg" />
+    <Resource Include="Photos\MarathonHowLong\worm.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

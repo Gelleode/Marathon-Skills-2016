@@ -9,6 +9,27 @@
       Title="MarathonLengthPage">
 
     <Grid>
-        
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="275"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="How long is marathon?" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" Foreground="#505050" Margin="10"/>
+        <TextBlock Text="Автобус" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Center" FontSize="21" Foreground="#505050" Margin="10"/>
+        <Image Source="/Photos/MarathonhowLong/bus.jpg" MaxWidth="500" MaxHeight="275" HorizontalAlignment="Right" Margin="5,0,20,0" Stretch="Fill"  Grid.Column="1" Grid.Row="2"/>
+        <TextBlock Text="" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="21" Foreground="#505050" Margin="10"/>
+        <TabControl Grid.Row="1" Grid.Column="2" Grid.RowSpan="3">
+            <TabItem Header="Speed">
+                
+            </TabItem>
+            <TabItem Header="Distance"></TabItem>
+        </TabControl>
     </Grid>
 </Page>
