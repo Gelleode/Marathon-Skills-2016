@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,40 @@ namespace Marathon_Skills_2016.Pages
         public MarathonLengthPage()
         {
             InitializeComponent();
+            BtnF1_Click(TBlockTitle, new RoutedEventArgs());
+        }
+        private void BtnF1_Click(object sender, RoutedEventArgs e)
+        {
+            TBlockTitle.Text = "F1 Car";
+            byte[] imageInfo = File.ReadAllBytes(String.Format($@"{Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName}\Photos\MarathonHowLong\f1-car.jpg"));
+            BitmapImage image;
+            using (MemoryStream imageStream = new MemoryStream(imageInfo))
+            {
+                image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = imageStream;
+                image.EndInit();
+            }
+            ImgItem.Source = image;
+            TBlockText.Text = "An F1 car travels at 345 km/h speed so would complete the marathon in 7 minutes 20 seconds";
+        }
+
+        private void BtnWorm_Click(object sender, RoutedEventArgs e)
+        {
+            TBlockTitle.Text = "F1 Car";
+            byte[] imageInfo = File.ReadAllBytes(String.Format($@"{Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName}\Photos\MarathonHowLong\worm.jpg"));
+            BitmapImage image;
+            using (MemoryStream imageStream = new MemoryStream(imageInfo))
+            {
+                image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = imageStream;
+                image.EndInit();
+            }
+            ImgItem.Source = image;
+            TBlockText.Text = "A worm travels at 0.01 km/h speed so would complete the marathon in 48 days, 20 hours and 5 minutes";
         }
     }
 }
