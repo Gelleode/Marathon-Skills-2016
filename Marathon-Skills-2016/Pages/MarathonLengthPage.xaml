@@ -9,11 +9,10 @@
       Title="MarathonLengthPage">
 
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="275"/>
+            <RowDefinition Height="245"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -22,14 +21,78 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="How long is marathon?" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="21" Foreground="#505050" Margin="10"/>
-        <TextBlock Text="Автобус" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Center" FontSize="21" Foreground="#505050" Margin="10"/>
-        <Image Source="/Photos/MarathonhowLong/bus.jpg" MaxWidth="500" MaxHeight="275" HorizontalAlignment="Right" Margin="5,0,20,0" Stretch="Fill"  Grid.Column="1" Grid.Row="2"/>
-        <TextBlock Text="" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="21" Foreground="#505050" Margin="10"/>
+        <TextBlock x:Name="TBlockTitle" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Center" FontSize="21" Foreground="#505050" Margin="10"/>
+        <Image x:Name="ImgItem" MaxWidth="500" MaxHeight="245" HorizontalAlignment="Right" Margin="5,0,20,0" Stretch="Fill"  Grid.Column="1" Grid.Row="2"/>
+        <TextBlock x:Name="TBlockText" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="21" Foreground="#505050" Margin="10"/>
         <TabControl Grid.Row="1" Grid.Column="2" Grid.RowSpan="3">
             <TabItem Header="Speed">
-                
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Button Click="BtnF1_Click">
+                            <Image Source="\Photos\MarathonHowLong\f1-car.jpg" Width="70" Stretch="Fill"/>
+                        </Button>
+                        <TextBlock Text="F1 Car" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15" FontSize="21" Foreground="#505050" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Button Click="BtnWorm_Click">
+                            <Image Source="\Photos\MarathonHowLong\worm.jpg" Width="70" Stretch="Fill"/>
+                        </Button>
+                        <TextBlock Text="Worm" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15" FontSize="21" Foreground="#505050" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Button Height="50">
+                            <Image Source="\Photos\MarathonHowLong\sloth.jpg" Width="70" Stretch="Uniform"/>
+                        </Button>
+                        <TextBlock Text="Sloth" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15" FontSize="21" Foreground="#505050" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Button>
+                            <Image Source="\Photos\MarathonHowLong\Capybara.jpg" Width="70" Stretch="Fill"/>
+                        </Button>
+                        <TextBlock Text="Capybara" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15" FontSize="21" Foreground="#505050" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="5">
+                        <Button Height="50">
+                            <Image Source="\Photos\MarathonHowLong\Jaguar.jpg" Width="70" Stretch="Fill"/>
+                        </Button>
+                        <TextBlock Text="Jaguar" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15" FontSize="21" Foreground="#505050" />
+                    </StackPanel>
+                </StackPanel>
             </TabItem>
-            <TabItem Header="Distance"></TabItem>
+            <TabItem Header="Distance">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="5">
+                        <Button Height="60">
+                            <Image Source="\Photos\MarathonHowLong\airbus-a380.jpg" Width="70" Stretch="Fill"/>
+                        </Button>
+                        <TextBlock Text="Airbus A380" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15" FontSize="21" Foreground="#505050" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="5">
+                        <Button>
+                            <Image Source="\Photos\MarathonHowLong\pair-of-havaianas.jpg" Width="70" Stretch="Fill"/>
+                        </Button>
+                        <TextBlock Text="Havaianas" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15" FontSize="21" Foreground="#505050" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="5">
+                        <Button Height="50">
+                            <Image Source="\Photos\MarathonHowLong\Football-field.jpg" Width="70" Stretch="Fill"/>
+                        </Button>
+                        <TextBlock Text="Football Field" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15" FontSize="21" Foreground="#505050" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="5">
+                        <Button Height="50">
+                            <Image Source="\Photos\MarathonHowLong\ronaldinho.jpg" Width="70" Stretch="Fill"/>
+                        </Button>
+                        <TextBlock Text="Ronaldinho" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15" FontSize="21" Foreground="#505050" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="5">
+                        <Button Height="60" Width="70">
+                            <Image Width="100" Stretch="UniformToFill" Source="\Photos\MarathonHowLong\bus.jpg" HorizontalAlignment="Right"/>
+                        </Button>
+                        <TextBlock Text="Airbus A380" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15" FontSize="21" Foreground="#505050" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
         </TabControl>
     </Grid>
 </Page>
