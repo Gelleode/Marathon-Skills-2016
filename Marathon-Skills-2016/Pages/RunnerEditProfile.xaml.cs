@@ -49,6 +49,7 @@ namespace Marathon_Skills_2016.Pages
                         image.EndInit();
                     }
                     ImageRunner.Source = image;
+
                 }
                 catch { }
             }
